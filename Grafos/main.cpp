@@ -1,37 +1,26 @@
 #include<iostream>
 using namespace std;
 
-class Complex
-{
-    int first, second;
-public:
-    void getdata(int x, int y)
-    {
-        first = x;
-        second = y;
-    }
-    void showdata();
-    Complex add(Complex c)
-    {
-        Complex temp;
-        temp.first = first + c.first;
-        temp.second = second + c.second;
-        return temp;
-    }
 
+//variables globales
+char opc;
+char volver;
+char valor;
+
+struct nodo{ //declaramos nodo que contiene un numero y dos punteros
+    int numero; //numero del nodo
+    struct nodo *next;
+    struct arista *ady; //puntero para la primera arista dl nodo
 };
 
-void Complex::showdata()
-{
-    cout<<"first ="<<first<<"\nSecond ="<<second<<endl;
-}
+//se instancia el nodo y se crea una variable puntero
+typedef struct nodo *Tnodo;
+Tnodo puntero; //puntero cabeza
 
-int main()
-{
-    Complex c1,c2,c3;
-    c1.getdata(5,10);
-    c2.getdata(25,15);
-    c3=c1.add(c2);
-    c3.showdata();
-    return 0;
-}
+struct arista{ //declaramos la arista su nodo destino y la arista siguiente
+    struct nodo *destino;
+    struct arista *next;
+};
+
+//se instancia la arista
+typedef struct arista *Tarista;
