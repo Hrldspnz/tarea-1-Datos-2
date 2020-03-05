@@ -22,7 +22,7 @@ struct arista{ //declaramos la arista su nodo destino y la arista siguiente
     struct arista *next;
 };
 
-//se instancia la arista
+//se instancia la arista con un puntero
 typedef struct arista *Tarista;
 
 void insertar_nodo(){
@@ -110,6 +110,68 @@ void insertar_arista(){
 
 }
 
+//Metodo que muestra el grafo
+void mostrar_grafo(){
+    Tnodo ptr;
+    Tarista ar;
+
+    ptr=puntero;
+    cout<<"Nodo : Adyacencia"<<endl;
+
+    while (ptr!=NULL) {
+
+        cout<<"   "<<ptr->numero<<"|"; //Muestra el dato del puntero
+
+        if(ptr->ady!=NULL){
+            ar=ptr->ady;
+            while (ar!=NULL) { //Muestra todas las aristas de ese puntero
+                cout<<"   "<<ar->destino->numero;
+                ar=ar->next;
+            }
+
+        }
+        ptr=ptr->next;
+        cout<<endl;
+    }
+}
+
+
+//Metodo que muestra las aristas de un nodo especifico
+void mostrar_aristas(){
+    Tnodo aux;
+    Tarista ar;
+    int var;
+
+    cout<<"Mostrar arista del nodo"<<endl;
+    cout<<"Ingrese el nodo:"<<endl;;cin>>var;
+
+    aux= puntero;
+    while (aux!=NULL) {
+        if(aux->numero==var){ // revisamos si ya hay un puntero definido
+            if(aux->ady==NULL){
+                cout<<"El nodo no tiene aristas"<<endl;
+                return;
+            }else{ //imprime las aristas del nodo
+                cout<<"Nodo : Adyacencia"<<endl;
+                cout<<"   "<<aux->numero<<"|";
+                ar=aux->ady;
+
+                //pasa al siguiente para mostrar sus aristas
+                while (ar!=NULL) {
+                    cout<<ar->destino->numero<<" ";
+                    ar=ar->next;
+                }
+                cout<<endl;
+                return;
+            }
+
+        }else{
+            aux=aux->next;
+        }
+
+
+    }
+}
 
 
 
