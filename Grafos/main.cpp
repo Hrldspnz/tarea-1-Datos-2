@@ -49,7 +49,7 @@ void insertar_nodo(){
 
 }
 
-//Metodo para agregar la lista
+//Metodo para agregar la arista
 void agregar_arista(Tnodo &aux, Tnodo &aux2, Tarista &nuevo){
     //Hacemos otro puntero apartir del puntero de la arista
     Tarista q;
@@ -68,7 +68,47 @@ void agregar_arista(Tnodo &aux, Tnodo &aux2, Tarista &nuevo){
 }
 
 // metodo para insertar la arista
+void insertar_arista(){
+    //varibles para el nodo inicial y final
+    int ini,fin;
 
+    Tarista nuevo=new struct arista;
+    Tnodo aux,aux2;
+
+    if(puntero==NULL){ //Verificamos que el grafo no este vacio
+        cout<<"ERROR: No hay un grafo"<<endl;
+        return;
+    }
+    nuevo->next=NULL;
+
+    //Se solicitan el nodo inicial y el final
+    cout<<"Ingrese el nodo inicial:";cin>>ini;
+    cout<<"Ingrese el nodo final:";cin>>fin;
+
+    aux=puntero;
+    aux2=puntero;
+
+    //Vemos si el aux2 tiene algo
+    while(aux2!=NULL){
+        if(aux2->numero==fin){ //vemos si tiene el puntero final
+            break;
+        }
+
+        //Si no le llevamos el valor de next
+        aux2=aux2->next;
+    }
+
+    //Ingresamos la arista al primer puntero
+    while (aux!=NULL) {
+        if(aux->numero==ini){ //si aux es igual a la arista del puntero 1 agrega la arista
+            agregar_arista(aux,aux2, nuevo);
+            return;
+        }
+        //Si no pasa al siguiente
+        aux=aux->next;
+    }
+
+}
 
 
 
