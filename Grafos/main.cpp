@@ -174,6 +174,48 @@ void mostrar_aristas(){
 }
 
 
+int crear_menu(){
+    cout<<"              Grafos"<<endl;
+    cout<<"Digite el numero de la accion que desea"<<endl;
+    cout<<"1) Insertar un nodo"<<endl;
+    cout<<"2) Insertar una arista"<<endl;
+    cout<<"3) Mostrar el grafo"<<endl;
+    cout<<"4) Mostrar las aristas de un nodo"<<endl;
+    cout<<"5) Salir"<<endl;
+
+}
+
+int main(){
+    puntero = NULL; //inicializamos el puntero
+
+    //Ciclo para ejecutar el menu
+
+    volver='s';
+    while(volver=='s'){
+        //Llamamos el menu
+        crear_menu();
+        cin>>opc;
+
+        switch (opc) {
+        case '1':
+            insertar_nodo();break;
+        case '2':
+            insertar_arista();break;
+        case '3':
+            mostrar_grafo();break;
+        case '4':
+            mostrar_aristas();break;
+        case '5':
+            cout<<"Salir"<<endl;
+            return 0;break;
+        default:
+            cout<<"Opcion no valida"<<endl;
+        }
+        cout<<"Desea volver al menu principal (s/n)"<<endl;
+        cin>>volver;
+    }
+    return 0;
+}
 
 
 
