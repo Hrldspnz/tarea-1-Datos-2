@@ -20,6 +20,7 @@ Tnodo puntero; //puntero cabeza
 struct arista{ //declaramos la arista su nodo destino y la arista siguiente
     struct nodo *destino;
     struct arista *next;
+    int peso;
 };
 
 //se instancia la arista con un puntero
@@ -50,18 +51,20 @@ void insertar_nodo(){
 }
 
 //Metodo para agregar la arista
-void agregar_arista(Tnodo &aux, Tnodo &aux2, Tarista &nuevo){
+void agregar_arista(Tnodo &aux, Tnodo &aux2, Tarista &nuevo, int aux_peso){
     //Hacemos otro puntero apartir del puntero de la arista
     Tarista q;
     if(aux->ady==NULL){ // si la esta vacia se crea la arista
         aux->ady=nuevo;
         nuevo->destino=aux2;
+        nuevo->peso=aux_peso;
     }else{ //Si no lo recorre hasta que pueda crearla
         q=aux->ady;
         while(q->next!=NULL){
             q=q->next;
         }
         nuevo->destino = aux2;
+        nuevo->peso=aux_peso;
         q->next=nuevo;
         cout<<"Arista creada"<<endl;
     }
@@ -70,7 +73,7 @@ void agregar_arista(Tnodo &aux, Tnodo &aux2, Tarista &nuevo){
 // metodo para insertar la arista
 void insertar_arista(){
     //varibles para el nodo inicial y final
-    int ini,fin;
+    int ini,fin,peso = 0;
 
     Tarista nuevo=new struct arista;
     Tnodo aux,aux2;
@@ -84,6 +87,7 @@ void insertar_arista(){
     //Se solicitan el nodo inicial y el final
     cout<<"Ingrese el nodo inicial:";cin>>ini;
     cout<<"Ingrese el nodo final:";cin>>fin;
+    cout<<"Ingrese el peso:";cin>>peso;
 
     aux=puntero;
     aux2=puntero;
@@ -101,7 +105,7 @@ void insertar_arista(){
     //Ingresamos la arista al primer puntero
     while (aux!=NULL) {
         if(aux->numero==ini){ //si aux es igual a la arista del puntero 1 agrega la arista
-            agregar_arista(aux,aux2, nuevo);
+            agregar_arista(aux,aux2, nuevo,peso);
             return;
         }
         //Si no pasa al siguiente
@@ -125,7 +129,7 @@ void mostrar_grafo(){
         if(ptr->ady!=NULL){
             ar=ptr->ady;
             while (ar!=NULL) { //Muestra todas las aristas de ese puntero
-                cout<<"   "<<ar->destino->numero;
+                cout<<"   "<<ar->destino->numero<<"("<<ar->peso<<")";
                 ar=ar->next;
             }
 
