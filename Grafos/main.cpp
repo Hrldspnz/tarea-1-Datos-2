@@ -120,7 +120,7 @@ void mostrar_grafo(){
     Tarista ar;
 
     ptr=puntero;
-    cout<<"Nodo : Adyacencia"<<endl;
+    cout<<"Nodo : Adyacencia(Peso)"<<endl;
 
     while (ptr!=NULL) {
 
@@ -156,13 +156,13 @@ void mostrar_aristas(){
                 cout<<"El nodo no tiene aristas"<<endl;
                 return;
             }else{ //imprime las aristas del nodo
-                cout<<"Nodo : Adyacencia"<<endl;
+                cout<<"Nodo : Adyacencia(Peso)"<<endl;
                 cout<<"   "<<aux->numero<<"|";
                 ar=aux->ady;
 
                 //pasa al siguiente para mostrar sus aristas
                 while (ar!=NULL) {
-                    cout<<ar->destino->numero<<" ";
+                    cout<<ar->destino->numero<<"("<<ar->peso<<")"<<" ";
                     ar=ar->next;
                 }
                 cout<<endl;
